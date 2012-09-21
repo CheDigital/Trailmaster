@@ -45,17 +45,16 @@
 								
 								
 								//console.log(tagarray);
-								if ($.inArray(tags[i], tagarray) !== -1) {
+								if ($.inArray(tags[i], tagarray) !== -1) { // if tag is already in array, ignore it.
 									//console.log("tag " + tags[i] + " is already in array");
-								} else {
-							
-									if (tags[i].match(/trail:/g)) { // tag name contains "trail:"
+								} else if (tags[i].match(/trail:/g)) { // tag name contains "trail:"
 											
-										tagarray.push(tags[i]); // add it to our new array
-										
-									}
+										tagarray.push(tags[i]); // add it to our new array of "trail only" tags.
 								}
 							}
+							/* next functionality here: go through our new tagarray and create a new array of the bookmarks that match each tag.
+							also deal with the "step" tags here, i think... not sure the right order to do it in yet.
+							*/
 													
 							
 							$('<li></li>').html('<div id="foo"><em>' + this.t + '</em><br/><br/>' + this.u + '<br/>' + '<br/></div>')
