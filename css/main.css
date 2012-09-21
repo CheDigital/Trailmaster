@@ -1,0 +1,89 @@
+body {
+	background: #FFFFFF;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 10pt;
+	color: black;
+}
+
+img {
+	padding: 1px;
+	border: 1px solid #999999;
+	background-color: #FFF;
+}
+
+p {
+	font-size: 10pt;
+}
+
+table tr td {
+	vertical-align: top;
+	padding: 4px;
+}
+	
+ul li {
+	font-size: 9pt;
+	list-style-image: url('http://people.ischool.berkeley.edu/~ryanfbaker/i253/images/bullet2.gif');
+	padding-bottom: 8px;
+	margin-left: -10px;
+	}
+
+#wrapper {
+        margin: 0 auto;
+        width: 1000px;
+}	
+
+#content {
+        width: 100%;
+        padding: 0px;
+        text-align: left;
+        vertical-align: top;
+}
+	
+#content-box {
+		margin: 0 auto;
+		width: 800px;
+		padding: 12px;
+		border: 1px dotted #c0c0c0;
+		-moz-box-shadow: 4px 4px 2px #b0b0b0;
+		-webkit-box-shadow: 4px 4px 2px #b0b0b0;
+		box-shadow: 4px 4px 2px #b0b0b0;
+		}
+		
+#linkbox {
+		width: 990px;
+		margin: 0 auto 12px;
+		padding: 8px;
+		border: 1px dotted #c0c0c0;
+		-moz-box-shadow: 4px 4px 2px #b0b0b0;
+		-webkit-box-shadow: 4px 4px 2px #b0b0b0;
+		box-shadow: 4px 4px 2px #b0b0b0;
+}
+	
+.header {
+	font-size: 16pt;
+	font-weight: bold;
+	padding: 4px 0px;
+}
+
+.subheader {
+	font-size: 12pt;
+	font-style: italic;
+}
+
+.description {
+	font-size: 10pt;
+	color: #444444;
+}
+
+#copy {
+	font-size: 8pt;
+	color: silver;
+	text-align: right;
+	}
+
+
+a:link {font-size: 12pt; text-decoration: none; color: #000;}
+a:visited {font-size: 12pt; text-decoration: underline; color: #000;}
+a:hover {font-size: 12pt; text-decoration: underline; color: #888;}
+a:active {font-size: 12pt; text-decoration: underline; color: #666;}
+	
