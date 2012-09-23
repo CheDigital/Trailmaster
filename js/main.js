@@ -6,21 +6,21 @@ $('a').click(function(){
 
 
 $(document).ready(function() {
-    // Load trailmaster for the specified user when the #load-trailmaster form is submitted
-
-
-   
 
     // Load trailmaster for the specified user when the #load-trailmaster form is submitted
     $('#load-trailmaster').submit(function() {
         
-		$('#trailmaster ul').empty(); 
+        // If a new username is submitted, clear out both #trailmaster and #trails to reset
+		$('#trailmaster ul').empty();
+		$('#trails ul').empty();
+
 		var username = $('#username').val();
         var tagarray = [];
 		var linkarray = [];
 		var count = 0;
 		// This cross-domain request requires that you use '?callback=?' because it is done using JSONP
-        $.getJSON('http://feeds.delicious.com/v2/json/' + username + '?callback=?',
+		// Also added count=100 so that it can pull more links, 10 seems to be the default
+        $.getJSON('http://feeds.delicious.com/v2/json/' + username + '?callback=?' + '&count=100',
         function(json){
 			$(json).each(function(index) {
                 // this.u // url
