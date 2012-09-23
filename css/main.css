@@ -1,8 +1,8 @@
 body {
 	background: #FFFFFF;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 10pt;
-	color: black;
+	font-family: "Avenir", "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+	font-size: 1em;
+	color: #222;
 }
 
 img {
@@ -11,9 +11,9 @@ img {
 	background-color: #FFF;
 }
 
-p {
-	font-size: 10pt;
-}
+h1{margin: 0px 0px; padding: 0;}
+h2{margin: 15px 0px 0px 0px; padding: 0; font-size: 1.2em;}
+p{margin: 0px 0px; padding: 0;}
 
 table tr td {
 	vertical-align: top;
@@ -21,7 +21,6 @@ table tr td {
 }
 	
 ul li {
-	font-size: 9pt;
 	list-style-image: url('http://people.ischool.berkeley.edu/~ryanfbaker/i253/images/bullet2.gif');
 	padding-bottom: 8px;
 	margin-left: -10px;
@@ -43,47 +42,46 @@ ul li {
 		margin: 0 auto;
 		width: 800px;
 		padding: 12px;
-		border: 1px dotted #c0c0c0;
-		-moz-box-shadow: 4px 4px 2px #b0b0b0;
-		-webkit-box-shadow: 4px 4px 2px #b0b0b0;
-		box-shadow: 4px 4px 2px #b0b0b0;
+		border: 1px dotted #222;
+		-moz-box-shadow: 4px 4px 2px #ddd;
+		-webkit-box-shadow: 4px 4px 2px #ddd;
+		box-shadow: 4px 4px 2px #ddd;
 		}
 		
 #linkbox {
 		width: 990px;
 		margin: 0 auto 12px;
 		padding: 8px;
-		border: 1px dotted #c0c0c0;
-		-moz-box-shadow: 4px 4px 2px #b0b0b0;
-		-webkit-box-shadow: 4px 4px 2px #b0b0b0;
-		box-shadow: 4px 4px 2px #b0b0b0;
+		border: 1px dotted #222;
+		-moz-box-shadow: 4px 4px 2px #ddd;
+		-webkit-box-shadow: 4px 4px 2px #ddd;
+		box-shadow: 4px 4px 2px #ddd;
 }
 	
 .header {
-	font-size: 16pt;
 	font-weight: bold;
 	padding: 4px 0px;
 }
 
 .subheader {
-	font-size: 12pt;
 	font-style: italic;
 }
 
 .description {
-	font-size: 10pt;
 	color: #444444;
 }
 
 #copy {
-	font-size: 8pt;
 	color: silver;
 	text-align: right;
 	}
 
 
-a:link {font-size: 12pt; text-decoration: none; color: #000;}
-a:visited {font-size: 12pt; text-decoration: underline; color: #000;}
-a:hover {font-size: 12pt; text-decoration: underline; color: #888;}
-a:active {font-size: 12pt; text-decoration: underline; color: #666;}
-	
+a:link {text-decoration: none; color: #247b01;}
+a:visited {text-decoration: underline; color: #247b01;}
+a:hover {text-decoration: underline; color: #888;}
+a:active {text-decoration: underline; color: #666;}
+
+input {font-size: 1em; margin: 0px; padding: 8px; border: 1px solid #222;}
+
+input#username {width: 200px;}

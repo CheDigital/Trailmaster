@@ -10,10 +10,10 @@ $(document).ready(function() {
     // Load trailmaster for the specified user when the #load-trailmaster form is submitted
     $('#load-trailmaster').submit(function() {
         
-        // If a new username is submitted, clear out both #trailmaster and #trails to reset
+        // If a new username is submitted, reset #trails and #trailmaster
+        $('#trails').html('<h2>Trails</h2><ul></ul>')
 		$('#trailmaster ul').empty();
-		$('#trails ul').empty();
-
+		
 		var username = $('#username').val();
         var tagarray = [];
 		var linkarray = [];
@@ -31,6 +31,8 @@ $(document).ready(function() {
 				linkarray.push('[' + count + ', "' + this.u + '", "' + this.d + '", "' + this.n + '", "' + this.t + '"]'); 
 
 				var tags = this.t;
+				
+
 
 				for(i=0;i<tags.length;i++)
 				{
