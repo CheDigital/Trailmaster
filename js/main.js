@@ -73,7 +73,6 @@ $(document).ready(function() {
 				$('#trailmasterhead').text(whichtag); // define the text for the header
 			
 				for (i=0;i<linkarray.length;i++) { // for each tag, we will look at each line in the link array. if it contains the tag in question, write it to a (eventually hidden) li.
-					
 													
 					myid = linkarray[i][0];
 					myurl = linkarray[i][1];
@@ -91,6 +90,7 @@ $(document).ready(function() {
 					- RB */
 
 					console.log("linkarray[i] is " + linkarray[i]);
+					console.log("link array typeof is " + jQuery.type(linkarray[i]) + "\n");
 					console.log("myid is " + myid);
 					console.log("myurl is " + myurl);
 					console.log("mytags is " + mytags);
