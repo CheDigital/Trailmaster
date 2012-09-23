@@ -13,7 +13,7 @@ $(document).ready(function() {
         // If a new username is submitted, reset #trails and #trailmaster
         $('#trails').html('<h2>Trails</h2><ul></ul>')
 		$('#trailmaster ul').empty();
-		
+
 		var username = $('#username').val();
         var tagarray = [];
 		var linkarray = [];
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 							tagarray.push(tags[i]); // add it to our new array of "trail only" tags.
 							
-								$('<li></li>').html('<div class = "trailitem"> <a href="#" onclick = "rohan"> '+ tags[i] + '</a></div>')
+								$('<li></li>').html('<div class = "trailitem"> <a href="#" onclick = "rohan"> '+ tags[i].slice(6) + '</a></div>') // slice out the "tags:" portion of each tag
 								.appendTo('#trails ul');		
 								
 							
