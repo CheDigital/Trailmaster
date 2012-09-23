@@ -1,11 +1,83 @@
-$('a').click(function(){
+//making array objects global to the javascript file - rohan
 
-    	alert("some link got clicked folks");
-    
+var tagarray = [];
+var linkarray = [];
+var count = 0;
+
+//var tempjson;
+
+
+ $('a').live('click', function() {
+		       
+ 			// call json interface again for each trail click. to be replaced by json copy from gettrail function to tempjson - Rohan
+
+
+ 			   var currtrail = $(this).attr('id');
+		    //   alert("current trailname : "+ currtrail );
+			//	displaylinks(currtrail);
+	         	
+	        
+	        if(currtrail.length == 0)	
+	        {
+
+	        	alert("this is a link");
+
+	        }
+
+	         $('#trailmasterhead').text('Links for ' + currtrail+ ' trail');
+	         	
+			 var username = $('#username').val();
+                    // This cross-domain request requires that you use '?callback=?' because it is done using JSONP
+                    $.getJSON('http://feeds.delicious.com/v2/json/' + username + '?callback=?',
+                     function(json){
+                        $(json).each(function(index) {
+                            // this.u // url
+                            // this.d // description
+                            // this.n // extended notes
+                            // this.t // array of tags
+                           
+                            var tags = this.t;
+                            var tagsstr = tags.toString();	
+                         //   alert(tagsstr);
+
+                            if(tagsstr.match(currtrail))
+                            {
+                            	
+                            	 $('<li></li>').html('<a href="' + this.u + '">' + this.d + '</a>' + '<br>' + this.t + '<br>' + this.n + '--------------------------------------------------------------------------------------------------- <br>')
+								.data('extended', this.n)
+								.data('tags', this.t)
+								.appendTo('#trailmaster ul');
+
+								//$.delay(300);
+
+                            }
+
+                        //   if($.inArray(currtrail,tags))
+                        // {  	
+                           
+				//		}	
+
+                        });
+
+
+						$('#trailmaster li').draggable({revert: true});
+                    });
+                        
+                 alert("display complete for the  "+ $(this).attr('id')+"trail. Click on a another trail to see its links. ") ;  	
+			  
+	            $('#trailmaster ul').empty();
+	            return false;
+
+
 	});
 
 
+
+
 $(document).ready(function() {
+
+// document.ready attaches events to elements on DOM at the load of the page. for dynamic elements, we have to use .live or .on depending on jqeury version
+		
 
     // Load trailmaster for the specified user when the #load-trailmaster form is submitted
     $('#load-trailmaster').submit(function() {
@@ -15,13 +87,15 @@ $(document).ready(function() {
 		$('#trailmaster ul').empty();
 
 		var username = $('#username').val();
-        var tagarray = [];
-		var linkarray = [];
-		var count = 0;
+        
 		// This cross-domain request requires that you use '?callback=?' because it is done using JSONP
 		// Also added count=100 so that it can pull more links, 10 seems to be the default
         $.getJSON('http://feeds.delicious.com/v2/json/' + username + '?callback=?' + '&count=100',
         function(json){
+			
+			var tempjson = $.extend(true,{},json);
+		//	alert("json copied");
+		//		alert(tempjson);
 			$(json).each(function(index) {
                 // this.u // url
                 // this.d // description
@@ -48,11 +122,11 @@ $(document).ready(function() {
 
 							tagarray.push(tags[i]); // add it to our new array of "trail only" tags.
 							
-								$('<li></li>').html('<div class = "trailitem"> <a href="#" onclick = "rohan"> '+ tags[i].slice(6) + '</a></div>') // slice out the "tags:" portion of each tag
+								$('<li></li>').html('<div class = "trailitem"> <a href="#" id= '+ tags[i].slice(6) +'>'+ tags[i].slice(6) + '</a></div>') // slice out the "tags:" portion of each tag
 								.appendTo('#trails ul');		
 								
 							
-						//	alert(tags[i]);
+						//	alert(tags[i].slice(6));
 					}
 
 					
@@ -105,8 +179,9 @@ $(document).ready(function() {
 						.appendTo('#trailmaster ul');	
 					}									
 				
-				};
+					};
 			
+
 			});
 				
 
