@@ -28,7 +28,7 @@ var count = 0;
 	         	
 			 var username = $('#username').val();
                     // This cross-domain request requires that you use '?callback=?' because it is done using JSONP
-                    $.getJSON('http://feeds.delicious.com/v2/json/' + username + '?callback=?',
+                    $.getJSON('http://feeds.delicious.com/v2/json/' + username + '?callback=?' + '&count=100',
                      function(json){
                         $(json).each(function(index) {
                             // this.u // url
@@ -63,7 +63,7 @@ var count = 0;
 						$('#trailmaster li').draggable({revert: true});
                     });
                         
-                 alert("display complete for the  "+ $(this).attr('id')+"trail. Click on a another trail to see its links. ") ;  	
+                 alert("Display complete for the  "+ $(this).attr('id')+"trail. Click on a another trail to see its links. ") ;  	
 			  
 	            $('#trailmaster ul').empty();
 	            return false;
@@ -144,7 +144,7 @@ $(document).ready(function() {
 
 				whichtag = this;
 				
-				$('#trailmasterhead').text(whichtag); // define the text for the header
+				// $('#trailmasterhead').text(whichtag); // define the text for the header
 			
 				for (i=0;i<linkarray.length;i++) { // for each tag, we will look at each line in the link array. if it contains the tag in question, write it to a (eventually hidden) li.
 													
@@ -176,7 +176,7 @@ $(document).ready(function() {
 						$('<li></li>').html('<div id="' + myid + '"><strong>' + myurl + '</strong><br/>' + mydescription + '<br/><br/></div>')
 						//.data('extended', this.n)
 						//.data('tags', this.t)
-						.appendTo('#trailmaster ul');	
+						//.appendTo('#trailmaster ul');	
 					}									
 				
 					};
@@ -188,6 +188,7 @@ $(document).ready(function() {
 
 			
 			$('#trailmaster li').draggable({revert: true});
+			console.log(linkarray)
         });
         return false;
     });
