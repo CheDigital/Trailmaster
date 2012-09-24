@@ -35,22 +35,20 @@ var count = 0;
                             // this.d // description
                             // this.n // extended notes
                             // this.t // array of tags
-                           
+                            
                             var tags = this.t;
                             var tagsstr = tags.toString();	
                          //   alert(tagsstr);
-
+							var stepcount = 1; // the number of the "step" tag that we're looking for. initializes as 1.
                             if(tagsstr.match(currtrail)) {
 								/* this bookmark contains the desired trail tag. now do a loop to determine which step tag it has.*/
 								
 								for(i=0;i<tags.length;i++){								
 								
-									console.log("tags[i] is " + tags[i]);
-									var stepcount = 1;
+									//console.log("tags[i] is " + tags[i]);
+									
 									
 									if (tags[i].match(/step:/g)) { // tag name contains "step:"
-										
-										
 										
 										var stepsplit = tags[i].split(':');
 										var stepnum = stepsplit[1];
@@ -58,14 +56,14 @@ var count = 0;
 										console.log("stepcount is " + stepcount);
 										
 										
-										while (stepnum == stepcount) { //  this is the next sequential step that we're looking to display.
+										if (stepnum == stepcount) { //  this is the next sequential step that we're looking to display.
 											
 											$('<li></li>').html('<a href="' + this.u + '">' + this.d + '</a>' + '<br>' + this.t + '<br>' + this.n + '--------------------------------------------------------------------------------------------------- <br>')
 											.data('extended', this.n)
 											.data('tags', this.t)
 											.appendTo('#trailmaster ul');							
 							
-											delete json[i]; // remove this entry from the json
+											//$(json).remove(index); // remove this entry from the json
 											stepcount++;
 										}
 											
