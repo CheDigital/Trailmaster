@@ -106,7 +106,7 @@ $('.trailItem').live('click', function() {
 			// Check if the bookmark is the right step
 			if ($.inArray('step:'+currentStep, delicious[i][4]) !== -1) {
 				// Build step detail section for this bookmark
-				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
+				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '" target="_blank">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
 			}
 		}
 	}	
@@ -142,7 +142,7 @@ $('#forward').live('click', function() {
 			// Check if the bookmark is the right step
 			if ($.inArray('step:'+currentStep, delicious[i][4]) !== -1) {
 				// Build step detail section for this bookmark
-				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
+				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '"target="_blank">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
 			}
 		}
 	}	
@@ -179,7 +179,7 @@ $('#backward').live('click', function() {
 			// Check if the bookmark is the right step
 			if ($.inArray('step:'+currentStep, delicious[i][4]) !== -1) {
 				// Build step detail section for this bookmark
-				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
+				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '"target="_blank">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
 			}
 		}
 	}	
