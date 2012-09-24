@@ -1,15 +1,5 @@
 $('a').live('click', function() {
    
-
-	//$("#trailmaster div").hide().delay(800); 
-	 
-	
-	
-});		
-
-
-$('a').live('click', function() {
-   
 	
 	var currtrail = $(this).attr('id');
 	
@@ -86,19 +76,20 @@ $(document).ready(function() {
             });		
 			
 			
-			console.log(linkarray + "\n");
-			console.log("link array typeof is " + jQuery.type(linkarray) + "\n");
-			console.log("############\n");
-			console.log(tagarray + "\n");
-			console.log("\n");
+			//console.log(linkarray + "\n");
+			//console.log("link array typeof is " + jQuery.type(linkarray) + "\n");
+			//console.log("############\n");
+			//console.log(tagarray + "\n");
+			//console.log("\n");
 			var tagarraynum = 1;
-			$.each(tagarray, function() { // go through each tag in our array
 
+			$.each(tagarray, function() { // go through each tag in our array
+				var sortarray = [];
 				var whichtag = this;
-				console.log("whichtag is " + whichtag);
+				//console.log("whichtag is " + whichtag);
 				$('#trailmaster').append('<div id="' + tagarraynum + '" style="display:none;"><strong>Steps for the "' + whichtag.slice(6) + '" trail</strong><ul></ul></div>');
 			
-				for (i=0;i<linkarray.length;i++) { // for each tag, we will look at each line in the link array. if it contains the tag in question, write it to a (eventually hidden) li.
+				for (i=0;i<linkarray.length;i++) { // for each tag, we will look at each line in the link array. if it contains the tag in question, write it to an li.
 
 	
 					var myid = linkarray[i][0];
@@ -113,12 +104,12 @@ $(document).ready(function() {
 					console.log("myurl is " + myurl);
 					console.log("\n");
 					*/
-					console.log("mytags is " + mytags);
+					//console.log("mytags is " + mytags);
 					//console.log(jQuery.type(mytags));
 					//var fooarray = mytags.split(',');
 					//console.log(typeof fooarray);
 					
-					var sortarray = [];
+					
 					
 					
 					for (j=0;j<mytags.length;j++) {
@@ -135,33 +126,45 @@ $(document).ready(function() {
 									var stepsplit = mytags[k].split(':');
 									var stepnum = stepsplit[1];
 									
-									var sortsubarray = [stepnum,myid,myurl,mydescription];
+									var sortsubarray = [stepnum,myid,myurl,mydescription,mynotes];
 									sortarray.push(sortsubarray);
 									
-									$('#trailmaster div:last-child ul').append('<div id="link' + myid + '">Step ' + stepnum + " -- <a href='" + myurl + "'>" + myurl + '</a><br/>' + mydescription + '<br/><br/><iframe src="' + myurl + '" style="width:800"></iframe><br/><br/></div>')
-									//.data('extended', this.n)
-									//.data('tags', this.t)	
 
-									};
 									tagarraynum++;									
 								}
 								
 							}
-
-								
 					
-						}
-					}
+						}											
 			
-				
+					}
+				}
 
+				sortarray.sort( function(a,b) {
+				return a[0]-b[0];		
+				});
+					
+				console.log(sortarray);		
+				console.log("array length is " + sortarray.length);
+				for (n=0;n<sortarray.length;n++) {
+					var foostepnum = sortarray[n][0];
+					var fooid = sortarray[n][1];
+					var foourl = sortarray[n][2];
+					var foodescription = sortarray[n][3];
+					var foonotes = sortarray[n][4];							
+					$('#trailmaster div:last-child ul').append('<div id="link' + fooid + '">Step ' + foostepnum + " -- <a href='" + foourl + "'>" + foourl + '</a><br/>' + foodescription +'<br/><br/></div>');
+					//'<br/><br/>' + '<iframe src="' + myurl + '" style="width:800"></iframe><br/><br/></div>');
+					//.data('extended', this.n)
+					//.data('tags', this.t)	
+
+				};
+
+				
 			});
-				
-
-
+			
+							
         });
         return false;
     });
 
 });
-
