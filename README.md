@@ -1,7 +1,7 @@
-Project title:  
+#Project title
 Trailmaster
 
-Team member names:  
+#Team member names
 Ryan Baker  
 Arthur Che  
 Rohan Salantry
