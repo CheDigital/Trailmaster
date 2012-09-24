@@ -8,7 +8,7 @@ var totalSteps = 0;
 var currentStep = 1;
 // Variable to track current trail
 var currentTrail
-
+// Variable for initial tag holding
 var tags = [];
 
 // Load Get Trails button functionality on document ready
@@ -89,20 +89,23 @@ $('.trailItem').live('click', function() {
 	totalSteps = 0
 
 	// Insert trail detail headers
-	$('#trailDetail').html('<h2>Trail Detail and Navigation</h2><div>You are on step ' + currentStep + ' of this trail.<div id="navigation"></div><div id="stepDetail"></div>');
+	$('#trailDetail').html('<h2>Navigation</h2><div>You are on step ' + currentStep + ' of this trail.<div id="navigation"></div><div id="stepDetail"></div>');
 
+	// Since clicking a trail takes you to step 1, only show Forward link.
 	$('#navigation').html('<div id="forward"><a href="#">Step Forward</a></div>');
+
 	// Iterate through the 'delicious' array
 	for(i=0;i<delicious.length;i++) {
 
 		// Check if the bookmark is tagged as part of this trail
 		if ($.inArray($(this).attr('id'), delicious[i][4]) !== -1) {
+			// Set currentTrail so it can be reused elsewhere
 			currentTrail = $(this).attr('id')
-			console.log(delicious[i][4]);
 			// Increment the total steps for this trail
 			totalSteps++;
+			// Check if the bookmark is the right step
 			if ($.inArray('step:'+currentStep, delicious[i][4]) !== -1) {
-				console.log(delicious[i][1])
+				// Build step detail section for this bookmark
 				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
 			}
 		}
@@ -111,11 +114,16 @@ $('.trailItem').live('click', function() {
 	
 });		
 
+// This handles clicks for stepping forward
 $('#forward').live('click', function() {
+
+	// Increment currentStep
 	currentStep++;
 
-	$('#trailDetail').html('<h2>Trail Detail and Navigation</h2><div>You are on step ' + currentStep + ' of this trail.<div id="navigation"></div><div id="stepDetail"></div>');
+	// Build out Navigation area
+	$('#trailDetail').html('<h2>Navigation</h2><div>You are on step ' + currentStep + ' of this trail.<div id="navigation"></div><div id="stepDetail"></div>');
 
+	// Navigation display depends on currentStep
 	if (currentStep == totalSteps) {
 		$('#navigation').html('<span id="backward"><a href="#">Step Backward</a></span>');
 	}
@@ -129,15 +137,11 @@ $('#forward').live('click', function() {
 
 	// Iterate through the 'delicious' array
 	for(i=0;i<delicious.length;i++) {
-
-		console.log('new steps');
-		console.log($(this).attr('id'));
-
 		// Check if the bookmark is tagged as part of this trail
 		if ($.inArray(currentTrail, delicious[i][4]) !== -1) {
-			console.log(delicious[i][4]);
+			// Check if the bookmark is the right step
 			if ($.inArray('step:'+currentStep, delicious[i][4]) !== -1) {
-				console.log(delicious[i][1])
+				// Build step detail section for this bookmark
 				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
 			}
 		}
@@ -146,11 +150,16 @@ $('#forward').live('click', function() {
 	return false;
 });
 
+// This handles clicks for stepping forward
 $('#backward').live('click', function() {
+
+	// Decrement currentStep
 	currentStep--;
 
-	$('#trailDetail').html('<h2>Trail Detail and Navigation</h2><div>You are on step ' + currentStep + ' of this trail.<div id="navigation"></div><div id="stepDetail"></div>');
+	// Build out Navigation area
+	$('#trailDetail').html('<h2>Navigation</h2><div>You are on step ' + currentStep + ' of this trail.<div id="navigation"></div><div id="stepDetail"></div>');
 
+	// Navigation display depends on currentStep
 	if (currentStep == totalSteps) {
 		$('#navigation').html('<span id="backward"><a href="#">Step Backward</a></span>');
 	}
@@ -165,14 +174,11 @@ $('#backward').live('click', function() {
 	// Iterate through the 'delicious' array
 	for(i=0;i<delicious.length;i++) {
 
-		console.log('new steps');
-		console.log($(this).attr('id'));
-
 		// Check if the bookmark is tagged as part of this trail
 		if ($.inArray(currentTrail, delicious[i][4]) !== -1) {
-			console.log(delicious[i][4]);
+			// Check if the bookmark is the right step
 			if ($.inArray('step:'+currentStep, delicious[i][4]) !== -1) {
-				console.log(delicious[i][1])
+				// Build step detail section for this bookmark
 				$('#stepDetail').html('<h2>Step Detail</h2><div><strong>Link:</strong> <a href="' + delicious[i][1] + '">' +delicious[i][2]+'</a></div><div><strong>URL:</strong> '+delicious[i][1]+'</div><div><strong>Notes:</strong> '+delicious[i][3]+'</div><div><strong>Tags:</strong> ' +delicious[i][4]+'</div><div><iframe src="' + delicious[i][1] + '" width="500" height="300"></iframe></div>');
 			}
 		}
