@@ -1,9 +1,9 @@
-Project title:
+Project title:  
 Trailmaster
 
-Team member names:
-Ryan Baker
-Arthur Che
+Team member names:  
+Ryan Baker  
+Arthur Che  
 Rohan Salantry
 
 Team member responsibilities:
