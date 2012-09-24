@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>Delicious API Proxy Test</title>
+		<style>
+		input, label {display: block;}
+		</style>
+	</head>
+	<body>
+        <!-- This form allows a user to test the Delicious proxy that facilitates browser-side communication -->
+		<form action="delicious_proxy.php" method="post" accept-charset="utf-8">
+			<label for="username">username</label><input type="text" name="username" value="" id="username">
+			<label for="password">Password</label><input type="password" name="password" value="" id="password">
+			<label for="url">URL</label><input type="text" name="url" value="" id="url">
+			<label for="description">Description</label><input type="text" name="description" value="" id="description">
+			<label for="extended">Extended Notes</label><input type="text" name="extended" value="" id="extended">
+			<label for="tags">tags</label><input type="text" name="tags" value="" id="tags">
+			<p><input type="submit" value="Add Bookmark &rarr;"></p>
+		</form>
+	</body>
+</html>
