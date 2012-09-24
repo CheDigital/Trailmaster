@@ -42,4 +42,4 @@ Chrome, Safari, Firefox, IE (new versions)
 ###Any bugs/quirks we should be aware of
 We're using iframes to show a preview of the link, which can cause some issues. For example, in our social media trail, pretty much all of the sites block iframes, so the preview doesn't show up. Other than that, the iframes also seem to make it run a little slow.  
 
-We haven't been working with bookmarks that have multiple trail/step tags on themg - it probably won't behave correctly if those are pulled.
+We haven't been working with bookmarks that have multiple trail/step tags on them - it probably won't behave correctly if those are pulled.
