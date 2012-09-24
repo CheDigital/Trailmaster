@@ -12,7 +12,7 @@ var count = 0;
  			// call json interface again for each trail click. to be replaced by json copy from gettrail function to tempjson - Rohan
 
 
- 			   var currtrail = $(this).attr('id');
+ 			var currtrail = $(this).attr('id');
 		    //   alert("current trailname : "+ currtrail );
 			//	displaylinks(currtrail);
 	         	
@@ -40,19 +40,44 @@ var count = 0;
                             var tagsstr = tags.toString();	
                          //   alert(tagsstr);
 
-                            if(tagsstr.match(currtrail))
-                            {
-                            	
-                            	 $('<li></li>').html('<a href="' + this.u + '">' + this.d + '</a>' + '<br>' + this.t + '<br>' + this.n + '--------------------------------------------------------------------------------------------------- <br>')
-								.data('extended', this.n)
-								.data('tags', this.t)
-								.appendTo('#trailmaster ul');
+                            if(tagsstr.match(currtrail)) {
+								/* this bookmark contains the desired trail tag. now do a loop to determine which step tag it has.*/
+								
+								for(i=0;i<tags.length;i++){								
+								
+									console.log("tags[i] is " + tags[i]);
+									var stepcount = 1;
+									
+									if (tags[i].match(/step:/g)) { // tag name contains "step:"
+										
+										
+										
+										var stepsplit = tags[i].split(':');
+										var stepnum = stepsplit[1];
+										console.log("stepnum is " + stepnum);
+										console.log("stepcount is " + stepcount);
+										
+										
+										while (stepnum == stepcount) { //  this is the next sequential step that we're looking to display.
+											
+											$('<li></li>').html('<a href="' + this.u + '">' + this.d + '</a>' + '<br>' + this.t + '<br>' + this.n + '--------------------------------------------------------------------------------------------------- <br>')
+											.data('extended', this.n)
+											.data('tags', this.t)
+											.appendTo('#trailmaster ul');							
+							
+											delete json[i]; // remove this entry from the json
+											stepcount++;
+										}
+											
+										
+									}
+									
+								}
 
 								//$.delay(300);
-
                             }
-
-                        //   if($.inArray(currtrail,tags))
+							
+						//   if($.inArray(currtrail,tags))
                         // {  	
                            
 				//		}	
@@ -122,8 +147,8 @@ $(document).ready(function() {
 
 							tagarray.push(tags[i]); // add it to our new array of "trail only" tags.
 							
-								$('<li></li>').html('<div class = "trailitem"> <a href="#" id= '+ tags[i].slice(6) +'>'+ tags[i].slice(6) + '</a></div>') // slice out the "tags:" portion of each tag
-								.appendTo('#trails ul');		
+							$('<li></li>').html('<div class = "trailitem"> <a href="#" id= '+ tags[i].slice(6) +'>'+ tags[i].slice(6) + '</a></div>') // slice out the "tags:" portion of each tag
+							.appendTo('#trails ul');		
 								
 							
 						//	alert(tags[i].slice(6));
@@ -134,11 +159,11 @@ $(document).ready(function() {
 
             });		
 			
-			console.log(linkarray + "\n");
-			console.log("link array typeof is " + jQuery.type(linkarray) + "\n");
-			console.log("############\n");
-			console.log(tagarray + "\n");
-			console.log("\n");
+			//console.log(linkarray + "\n");
+			//console.log("link array typeof is " + jQuery.type(linkarray) + "\n");
+			//console.log("############\n");
+			//console.log(tagarray + "\n");
+			//console.log("\n");
 			
 			$.each(tagarray, function() { // go through each tag in our array
 
@@ -154,30 +179,23 @@ $(document).ready(function() {
 					mynotes = linkarray[i][3];
 					mytags = linkarray[i][4];
 					
-					/* 
-					READ ME::::::::::
-					
-					This part isn't working. it is parsing out element 0 of the array as "[" instead of the actual first value of the array (which should be the id).. and so on down the line. It is obviously a result of me not structuring the multi-dimensional array correctly. 
-					
-					Could help with answer here http://wpquestions.com/question/show/id/3355
-					
-					- RB */
 
-					console.log("linkarray[i] is " + linkarray[i]);
-					console.log("link array typeof is " + jQuery.type(linkarray[i]) + "\n");
-					console.log("myid is " + myid);
-					console.log("myurl is " + myurl);
-					console.log("mytags is " + mytags);
-					console.log("\n");
+					//console.log("linkarray[i] is " + linkarray[i]);
+					//console.log("link array typeof is " + jQuery.type(linkarray[i]) + "\n");
+					//console.log("myid is " + myid);
+					//console.log("myurl is " + myurl);
+					//console.log("mytags is " + mytags);
+					//console.log("\n");
+					/*
 					if ($.inArray(whichtag, mytags) !== -1) { // thistag is in the array associated with this link. write to li.	
 					
-						console.log("the link " + url + " is tagged with " + thistag + "\n");
+						//console.log("the link " + url + " is tagged with " + thistag + "\n");
 						
 						$('<li></li>').html('<div id="' + myid + '"><strong>' + myurl + '</strong><br/>' + mydescription + '<br/><br/></div>')
 						//.data('extended', this.n)
 						//.data('tags', this.t)
 						//.appendTo('#trailmaster ul');	
-					}									
+					}*/									
 				
 					};
 			
@@ -188,7 +206,7 @@ $(document).ready(function() {
 
 			
 			$('#trailmaster li').draggable({revert: true});
-			console.log(linkarray)
+			//console.log(linkarray)
         });
         return false;
     });
