@@ -20,8 +20,7 @@ $(document).ready(function() {
 		$('#trails').html('<h2>Trails</h2><ul></ul>');
 
         // Reset #trails and #bookmark sections, as well as trailList and delicious arrays
-		$('#trails ul').empty();
-		$('#bookmark').empty();
+		$('#trails ul,#stepDetail,#trailDetail,#navigation').empty();
 		trailList = []
 		delicious = []
 
